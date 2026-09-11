@@ -1,5 +1,19 @@
 ## KDBush
 
+>
+> 这段代码是 JavaScript 生态中著名的顶级高性能空间索引库 —— KDBush（由 Mapbox 核心算法科学家、Leaflet/RBush 的作者 Vladimir Agafonkin 开发）。
+>
+> 它是一个专为 2D 点数据（Point）设计的、基于纯连续二进制内存（TypedArray / ArrayBuffer）的静态 KD-Tree（k-d 树）空间索引。
+>
+> 一、 它是干什么的？
+> 在前端有 数万到数百万个坐标点 $(x, y)$（例如图谱节点、地图散点、GPS 轨迹点）时，它用于在 微秒（$\mu s$）级别 极速完成以下两类空间查询：
+> 
+> - 矩形范围查询 (range(minX, minY, maxX, maxY))：
+> - 图谱中的应用：视口裁剪（Viewport Culling） —— 瞬间返回当前屏幕视口内的所有节点索引 ID。
+> - 圆形/半径邻域查询 (within(qx, qy, r) 或 withinInto(...))：
+> - 图谱中的应用：鼠标悬停拾取（Hit Testing）、附近连通节点探测、距离范围过滤。
+>
+
 A very fast static spatial index for 2D points based on a flat KD-tree.
 Compared to [RBush](https://github.com/mourner/rbush):
 
